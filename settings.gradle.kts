@@ -20,6 +20,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ProjectTemplate"
-include(":app")
 include(":core:exception")
 include(":core:presentation")
