@@ -59,7 +59,7 @@ import kotlinx.coroutines.launch
 fun RefreshLazyColumn(
     onLoad: () -> Unit,
     onRefresh: () -> Unit,
-    refreshLazyState: RefreshLazyState,
+    refreshLazyListState: RefreshLazyListState,
     modifier: Modifier = Modifier,
     lazyState: LazyListState = rememberLazyListState(),
     contentPadding: PaddingValues = PaddingValues(0.dp),
@@ -69,10 +69,10 @@ fun RefreshLazyColumn(
     flingBehavior: FlingBehavior = ScrollableDefaults. flingBehavior(),
     userScrollEnabled: Boolean = true,
     refreshState: PullToRefreshState = rememberPullToRefreshState(),
-    moveTopButton: @Composable BoxScope.() -> Unit = {
+    refreshIndicator: @Composable BoxScope.() -> Unit = {
         Indicator(
             modifier = Modifier.align(Alignment.TopCenter),
-            isRefreshing = refreshLazyState is RefreshLazyState.Refresh,
+            isRefreshing = refreshLazyListState is RefreshLazyListState.Refreshing,
             state = refreshState
         )
     },
@@ -87,8 +87,8 @@ fun RefreshLazyColumn(
         }
     }
 
-    LaunchedEffect(key1 = refreshLazyState) {
-        innerLoading = refreshLazyState is RefreshLazyState.Loading
+    LaunchedEffect(key1 = refreshLazyListState) {
+        innerLoading = refreshLazyListState is RefreshLazyListState.Loading
     }
 
     LaunchedEffect(key1 = lazyState) {
@@ -105,10 +105,10 @@ fun RefreshLazyColumn(
     }
 
     PullToRefreshBox(
-        isRefreshing = refreshLazyState is RefreshLazyState.Refresh,
+        isRefreshing = refreshLazyListState is RefreshLazyListState.Refreshing,
         state = refreshState,
         onRefresh = onRefresh,
-        indicator = moveTopButton,
+        indicator = refreshIndicator,
         modifier = modifier
     ) {
         LazyColumn(
@@ -162,7 +162,7 @@ private fun RefreshLazyPrev() {
         Log.i("LOG_CHECK", "RefreshLazyPrev: page:$page")
     }
     val scope = rememberCoroutineScope()
-    var state by remember { mutableStateOf<RefreshLazyState>(RefreshLazyState.Idle) }
+    var state by remember { mutableStateOf<RefreshLazyListState>(RefreshLazyListState.Idle) }
     
     Log.v("LOG_CHECK", "state : $state: ")
     Column(
@@ -179,25 +179,25 @@ private fun RefreshLazyPrev() {
             onLoad = {
                 Log.i("LOG_CHECK", "RefreshLazyPrev: on load")
                 scope.launch {
-                    state = RefreshLazyState.Loading
+                    state = RefreshLazyListState.Loading
                     delay(100)
                     list.addAll(List(take) { page * take + it })
                     Log.wtf("LOG_CHECK", "RefreshLazyPrev: list :$list")
                     page ++
-                    state = RefreshLazyState.Idle
+                    state = RefreshLazyListState.Idle
                 }
             },
             onRefresh = {
                 scope.launch {
-                    state = RefreshLazyState.Refresh
+                    state = RefreshLazyListState.Refreshing
                     delay(500)
                     list.clear()
                     list.addAll(List(take) { it })
                     page = 1
-                    state = RefreshLazyState.Idle
+                    state = RefreshLazyListState.Idle
                 }
             },
-            refreshLazyState = state
+            refreshLazyListState = state
         ) {
             items(items = list, key = { it }) {
                 Text(text = it.toString(), modifier= Modifier
