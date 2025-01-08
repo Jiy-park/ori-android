@@ -13,3 +13,8 @@ kotlin {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
     }
 }
+
+dependencies {
+    implementation(libs.kotlin.stdlib) // Kotlin 표준 라이브러리 추가
+    implementation(libs.kotlinx.coroutines.core) // 코루틴 라이브러리
+}
