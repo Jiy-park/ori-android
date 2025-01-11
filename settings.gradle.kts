@@ -23,3 +23,4 @@ rootProject.name = "ProjectTemplate"
 include(":core:core")
 include(":core:presentation")
 include(":core:network")
+include(":data:_source:local:data-store-manager")
