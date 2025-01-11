@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "ProjectTemplate"
 include(":core:core")
 include(":core:presentation")
+include(":core:network")
