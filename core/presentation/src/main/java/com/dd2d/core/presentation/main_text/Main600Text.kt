@@ -5,7 +5,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
@@ -19,7 +18,6 @@ fun Main600Text(
     modifier: Modifier = Modifier,
     color: Color = Color.Black,
     fontSize: TextUnit = 14.sp,
-    fontStyle: FontStyle = FontStyle.Italic,
     fontFamily: FontFamily = FontFamily.Default,
     letterSpacing: TextUnit = TextUnit.Unspecified,
     textDecoration: TextDecoration = TextDecoration.None,
@@ -36,7 +34,6 @@ fun Main600Text(
         modifier = modifier,
         color = color,
         fontSize = fontSize,
-        fontStyle = fontStyle,
         fontWeight = FontWeight.W600,
         fontFamily = fontFamily,
         letterSpacing = letterSpacing,
