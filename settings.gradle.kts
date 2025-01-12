@@ -20,9 +20,12 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ProjectTemplate"
+include(":app")
+
 include(":core:core")
-include(":core:presentation")
 include(":core:network")
+include(":core:presentation")
+
 include(":data:_source:local:data-store-manager")
 include(":data:_source:local:room")
 include(":data:_source:remote:api")
