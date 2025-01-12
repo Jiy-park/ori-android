@@ -1,5 +1,7 @@
 package com.dd2d.app.navigation
 
-sealed interface AppDestination {
+import kotlinx.serialization.Serializable
 
+sealed interface AppDestination {
+    @Serializable data object Main: AppDestination
 }
