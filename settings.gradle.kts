@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ProjectTemplate"
+rootProject.name = "OriAndroid"
 include(":app")
 
 include(":core:core")
