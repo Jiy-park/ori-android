@@ -4,6 +4,7 @@ import com.dd2d.core.exception.ClientException
 import com.dd2d.core.exception.ManagedException
 import com.dd2d.core.exception.UserException
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
@@ -22,7 +23,7 @@ sealed interface DataState <out T> {
     data class Success<T>(val data: T): DataState<T>
 }
 
-inline fun <reified T> Flow<T>.asDataState(flowOn: CoroutineDispatcher) = this
+inline fun <reified T> Flow<T>.asDataState(flowOn: CoroutineDispatcher = Dispatchers.IO) = this
     .flowOn(flowOn)
     .map<T, DataState<T>> { DataState.Success(it) }
     .onStart { emit(DataState.Loading) }
