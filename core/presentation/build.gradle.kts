@@ -41,16 +41,16 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(libs.androidx.activity.compose) // Compose와 통합된 Activity 관련 기능
-    implementation(platform(libs.androidx.compose.bom)) // Compose BOM (버전 관리)
-    implementation(libs.androidx.ui) // Compose UI 관련 라이브러리
-    implementation(libs.androidx.ui.graphics) // Compose 그래픽 관련 기능
-    implementation(libs.androidx.ui.tooling.preview) // Compose Preview 기능
-    implementation(libs.androidx.material3) // Compose용 Material 3 UI 컴포넌트
-    androidTestImplementation(platform(libs.androidx.compose.bom)) // Compose 테스트 관련 BOM
-    androidTestImplementation(libs.androidx.ui.test.junit4) // Compose UI 테스트용 JUnit4 지원
-    debugImplementation(libs.androidx.ui.tooling) // Compose Tooling 지원 (디버그 모드)
-    debugImplementation(libs.androidx.ui.test.manifest) // Compose 테스트를 위한 Manifest 지원
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation(project(":core:core"))
 }
