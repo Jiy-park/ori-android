@@ -29,3 +29,7 @@ include(":core:presentation")
 include(":data:_source:local:data-store-manager")
 include(":data:_source:local:room")
 include(":data:_source:remote:api")
+
+include(":domain:code-post")
+
+include(":presentation:code-post")
