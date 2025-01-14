@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.dd2d.app.navigation.composable.MainDestination
 import com.dd2d.app.navigation.composable.main
 
 @Composable
@@ -19,6 +20,12 @@ fun AppNavHost(
         startDestination = startDestination,
         modifier = modifier
     ) {
-        main(navController = navController, modifier = Modifier.fillMaxSize())
+        main(
+            startDestination = MainDestination.CodePost,
+            navigateEvent = {
+
+            },
+            modifier = Modifier.fillMaxSize()
+        )
     }
 }

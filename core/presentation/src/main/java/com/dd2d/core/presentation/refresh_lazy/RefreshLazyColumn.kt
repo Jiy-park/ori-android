@@ -53,6 +53,7 @@ import com.dd2d.core.presentation.R
 import com.dd2d.core.presentation.theme.MainColor
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -95,7 +96,8 @@ fun RefreshLazyColumn(
     }
 
     LaunchedEffect(key1 = lazyState) {
-        snapshotFlow { lazyState.layoutInfo.visibleItemsInfo.last().index }
+        snapshotFlow { lazyState.layoutInfo.visibleItemsInfo.lastOrNull()?.index }
+            .filterNotNull()
             .filter { lastVisibleItemIndex ->
                 lastVisibleItemIndex >= lazyState.layoutInfo.totalItemsCount * 0.5
             }

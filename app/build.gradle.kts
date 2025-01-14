@@ -77,4 +77,10 @@ dependencies {
     implementation(project(":data:_source:local:data-store-manager"))
     implementation(project(":data:_source:local:room"))
     implementation(project(":data:_source:remote:api"))
+
+    implementation(project(":data:code-post"))
+
+    implementation(project(":domain:code-post"))
+
+    implementation(project(":presentation:code-post"))
 }
