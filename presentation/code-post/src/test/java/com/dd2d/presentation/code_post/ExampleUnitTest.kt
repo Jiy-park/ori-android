@@ -1,4 +1,4 @@
-package com.dd2d.data.code_post
+package com.dd2d.presentation.code_post
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

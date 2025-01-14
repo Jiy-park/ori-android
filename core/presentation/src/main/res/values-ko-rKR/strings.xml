@@ -2,4 +2,7 @@
 <resources>
     <string name="move_to_top">맨 위로 이동하기</string>
     <string name="app_name">Ori</string>
+    <string name="back_button">뒤로 가기</string>
+    <string name="close">닫기</string>
+    <string name="clear">모두 지우기</string>
 </resources>

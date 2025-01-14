@@ -50,6 +50,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dd2d.core.presentation.R
+import com.dd2d.core.presentation.theme.MainColor
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
@@ -73,7 +74,9 @@ fun RefreshLazyColumn(
         Indicator(
             modifier = Modifier.align(Alignment.TopCenter),
             isRefreshing = refreshLazyListState is RefreshLazyListState.Refreshing,
-            state = refreshState
+            state = refreshState,
+            color = MainColor,
+            containerColor = Color.White,
         )
     },
     content: LazyListScope.() -> Unit,
